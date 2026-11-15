@@ -187,10 +187,16 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .drawer ul{padding-left:18px;color:#c6d3e3;font-size:13.5px;line-height:1.6}
 .close{position:absolute;right:16px;top:16px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.07)}
 
-@media (max-height:700px),(max-width:1100px){
+@media (max-height:720px){
+  .top{padding:8px 24px}.scene{padding:0 24px 6px;gap:8px}.scene-head h2{font-size:22px}
+  .stat{padding:10px 14px}.stat strong{font-size:30px}.stat p{margin-top:4px;font-size:12px}
+  .grid{gap:10px}.card{padding:10px 12px;border-radius:14px}.dock{padding:4px 24px 8px}
+  .ring-c b{font-size:18px}.st-body h4{font-size:17px}.icard{padding:10px}
+}
+@media (max-height:520px),(max-width:1100px){
   .app{height:auto;min-height:100vh;overflow:visible}
-  .grid{grid-auto-rows:minmax(240px,auto)}
-  .hero{grid-auto-rows:auto}
+  .grid{grid-auto-rows:minmax(90px,auto)}
+  .grid>*{min-height:220px}.hero{min-height:0}
 }
 @media (max-width:1100px){.top{flex-wrap:wrap}.domains{margin-left:0;overflow:auto;max-width:100%}.source{display:none}}
 @media (max-width:760px){
