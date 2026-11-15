@@ -1,56 +1,107 @@
-// Procurement EBR content. Sources: Ops deck "EBR_Procurement_Nov26_MdP-Draft2" (12 Nov 2026) for H1 FY27;
-// FY26 automation baseline from the previous Procurement EBR site (procebr).
+// Procurement EBR content.
+// Sources: Procurement MBR 21 Sep 2026 (MBR Procurement Sep 2026.pptx; SLAs reported for Aug '26),
+// Ops EBR deck draft 2 (12 Nov 2026), Procurement RPA weekly governance notes (5 Nov 2026).
+// Telkom fiscal year: FY27 month 1 = Apr 2026.
+const M = ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
 const CONFIG = {
   key: 'procurement',
   domain: 'Procurement',
   title: 'Procurement Executive Business Review',
   period: 'H1 FY27',
   accent: '#0284c7',
-  source: 'Sources: Ops EBR deck draft 2 (Nov 2026) · FY26 automation baseline',
+  source: 'Sources: Procurement MBR 21 Sep 2026 (SLAs Aug ’26) · Ops EBR draft 2 (12 Nov 2026) · RPA governance 5 Nov 2026',
   tabs: [
     {
       id: 'highlights',
       label: 'Highlights',
       title: 'H1 FY27 highlights',
-      sub: 'FY26 vs FY27 performance',
+      sub: 'April to September 2026',
       blocks: [
         {
           type: 'kpis',
           items: [
+            { value: '29,886', label: 'POs created, Apr–Sep', note: 'Avg PR to PO 0.14 days' },
             { value: '91%', label: 'PR Create by bot (in scope)', note: 'Up from 58% in FY26', trend: 'up' },
-            { value: '88%', label: 'PO Create by bot', note: 'Up from 84% in FY26', trend: 'up' },
-            { value: '−25%', label: 'Spot buy turnaround (PR to PO)', note: 'Hours from PR to PO', trend: 'down' },
-            { value: '−48%', label: 'PO acknowledgement turnaround', note: 'From 4 days to 2 days', trend: 'down' },
+            { value: '1.6 days', label: 'Spot buy, WNS turnaround', note: 'YTD · 1,476 POs · cost-centre approval 2.33 days' },
+            { value: 'R10.1m', label: 'Auction value realised', note: '41 reverse (R5.9m) · 8 forward (R4.2m)' },
           ],
         },
         {
-          type: 'chart', kind: 'bar', span: 4, title: 'PR Create by bot', note: '% of in-scope PRs', suffix: '%', max: 100,
-          labels: ['FY26', 'FY27 H1'], datasets: [{ label: 'PR Create', data: [58, 91], colors: ['#94a3b8', 'var(--accent)'] }],
-          footnote: 'Driven by end-user adoption and added scope.',
+          type: 'chart', kind: 'bar', span: 4, title: 'POs created per month', note: 'Sep: Auto 2,852 · Bot 1,891 · Manual 555',
+          labels: M, datasets: [{ label: 'POs', data: [3915, 5535, 5262, 5057, 4819, 5298] }],
+          footnote: '89% of September POs created automatically or by bot.',
         },
         {
-          type: 'chart', kind: 'bar', span: 4, title: 'PO Create by bot', note: '% of POs', suffix: '%', min: 70, max: 100,
-          labels: ['FY26', 'FY27 H1'], datasets: [{ label: 'PO Create', data: [84, 88], colors: ['#94a3b8', 'var(--accent)'] }],
-          footnote: 'Scope added for RI PR lines (CMAC, intercompany) and Mobile POs.',
+          type: 'chart', kind: 'line', span: 4, title: 'PR release to PO release', note: 'Business hours by channel', suffix: 'h',
+          labels: M,
+          datasets: [
+            { label: 'Auto', data: [3, 2, 5, 1, 0, 1] },
+            { label: 'Bot', data: [29, 14, 16, 19, 33, 8], color: '#0f766e' },
+            { label: 'Manual', data: [20, 13, 23, 42, 74, 13], color: '#d97706' },
+            { label: 'RFQ', data: [36, 45, 45, 38, 48, 44], color: '#94a3b8' },
+          ],
+          footnote: 'September recovered after the August peak.',
         },
         {
-          type: 'chart', kind: 'bar', span: 4, title: 'Spot buy turnaround, PR to PO', note: 'Hours', suffix: 'h',
-          labels: ['FY26', 'FY27 H1'], datasets: [{ label: 'Turnaround', data: [90.9, 67.5], colors: ['#94a3b8', 'var(--accent)'] }],
-          footnote: 'Process optimisation and cost-centre owner follow-up.',
+          type: 'chart', kind: 'bar', span: 4, title: 'Spot buy turnaround', note: 'Days', suffix: 'd',
+          labels: M,
+          datasets: [
+            { label: 'Cost-centre approval', data: [1.89, 2.33, 2.29, 1.94, 2.41, 2.29], color: '#94a3b8' },
+            { label: 'WNS', data: [1.35, 1.4, 1.35, 1.07, 1.85, 1.5], color: 'var(--accent)' },
+          ],
+          footnote: 'Spot buy volumes rose to 355 POs in September.',
         },
         {
-          type: 'list', span: 6, title: 'What changed',
+          type: 'list', span: 6, title: 'Key call-outs',
           items: [
-            { title: 'Sustained end-user engagement', text: 'Higher adoption increased PR volumes created by the bot.' },
-            { title: 'Scope added', text: 'RI PR lines for CMAC and intercompany; Mobile PO type included.' },
-            { title: 'Vendor compliance', text: 'Buyer-led vendor education and Apple POs included in acknowledgement automation.' },
+            { title: 'Spot buy reduced', text: 'Qalaboche contract in place.' },
+            { title: 'Controls', text: 'Target value errors down; all GRC testing submitted.' },
+            { title: 'SLA turnaround dashboards', text: 'Published, with SLA tables and turnaround graphs per period.', status: 'live' },
           ],
         },
         {
-          type: 'list', span: 6, title: 'Operational insight',
+          type: 'list', span: 6, title: 'Supplier and master data',
           items: [
-            { title: 'SLA dashboard', text: 'Tracks turnaround and volumes to drive outcome-based results.', status: 'live' },
-            { title: 'E-invoicing', text: 'Procurement team supported the e-invoicing implementation.', status: 'implemented' },
+            { title: 'Supplier onboarding (transactional)', text: '155 YTD · average 3.45 days; September 2.67 days.', metric: '2.67 d' },
+            { title: 'First inquiry resolution', text: '102 YTD · average 0.23 days.', metric: '0.23 d' },
+            { title: 'Vendor VAT number project', text: 'Outstanding vendors cut from 44 (15 Sep) to 8 (29 Sep).', metric: '44 → 8' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'sla',
+      label: 'Service levels',
+      title: 'Service level performance',
+      sub: 'Reported for August 2026',
+      blocks: [
+        {
+          type: 'kpis',
+          items: [
+            { value: '13 of 14', label: 'Measured SLAs at 100% (WNS)', note: 'Exception: open order management' },
+            { value: '4,818', label: 'PR to PO conversions', note: 'WNS 100% · end-to-end 97%' },
+            { value: '1,499', label: 'PO acknowledgements', note: '100% within standard' },
+            { value: '1%', label: 'Open order management', note: 'Standard 95% · action plan in place', trend: 'down', good: false },
+          ],
+        },
+        {
+          type: 'table', span: 12, rows: 2, title: 'SLA detail', note: 'WNS = within WNS control · Actual = end-to-end',
+          columns: ['SLA', 'Standard', 'Volume', 'WNS', 'Actual'],
+          rows: [
+            ['PR to PO conversion', '99%', '4,818', '100%', '97%'],
+            ['PO amendments', '99%', '920', '100%', '97%'],
+            ['Open order management', '95%', '2,294', '1%', '0%'],
+            ['PO acknowledgements', '95%', '1,499', '100%', '100%'],
+            ['Spot buy: PR to quote finalisation', '98%', '329', '100%', '85%'],
+            ['Spot buy: quote to PO release', '98%', '329', '100%', '100%'],
+            ['Prospective supplier onboarding (single)', '95%', '9', '100%', '66%'],
+            ['Transactional supplier onboarding (single)', '95%', '30', '100%', '90%'],
+            ['Material and services masters', '95%', '182', '100%', '99%'],
+            ['Contracts', '95%', '258', '100%', '99%'],
+            ['B-BBEE updates and maintenance', '99%', '130', '100%', '100%'],
+            ['P-Card spend compliance', '99%', '26', '100%', '100%'],
+            ['P-Card operations reporting', '95%', '143', '100%', '100%'],
+            ['Sourcing events admin support', '99%', '144', '100%', '100%'],
           ],
         },
       ],
@@ -59,39 +110,45 @@ const CONFIG = {
       id: 'rpa',
       label: 'Transformation and RPA',
       title: 'Transformation and RPA',
-      sub: 'Bots in production and automation coverage',
+      sub: 'Automation status · RPA governance to 5 Nov 2026',
       blocks: [
         {
           type: 'kpis',
           items: [
-            { value: '5+', label: 'Procurement automations live' },
-            { value: '80%', label: 'Overall automation coverage', note: 'FY26 year-end' },
-            { value: '5 FTE', label: 'Redeployed to value roles' },
-            { value: '75→91%', label: 'Vendor NPS', trend: 'up' },
+            { value: '>88%', label: 'PR Create automation', note: 'Running smoothly' },
+            { value: '>95%', label: 'PO Release automation', note: 'Incl. Mobile POs' },
+            { value: '~90%', label: 'PR to PO automation', note: 'Running smoothly' },
+            { value: '>90%', label: 'PO Acknowledgement automation', note: 'No open issues' },
           ],
         },
         {
-          type: 'chart', kind: 'line', span: 5, title: 'PR Create by bot, monthly', note: 'Jan 2025 to Mar 2026 · target 80%', suffix: '%', max: 100,
-          labels: ["Jan'25", 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', "Jan'26", 'Feb', 'Mar'],
-          datasets: [
-            { label: 'Achieved', data: [7, 8, 13, 19, 14, 14, 21, 55, 61, 80, 82, 82, 86, 86, 88] },
-            { label: 'Target', data: Array(15).fill(80), color: '#d97706', dashed: true },
-          ],
-          footnote: 'H1 FY27 reached 91%.',
-        },
-        {
-          type: 'chart', kind: 'bar', span: 3, horizontal: true, title: 'Automation coverage by step', note: 'FY26 year-end', suffix: '%', max: 100,
-          labels: ['PR Create', 'PO Create', 'PO Release 31', 'PO Release 37', 'PO Ack'],
-          datasets: [{ label: 'Coverage', data: [60, 80, 78, 100, 98] }],
-        },
-        {
-          type: 'list', span: 4, title: 'Bots in production',
+          type: 'list', span: 4, rows: 2, title: 'Delivered and in production',
           items: [
-            { title: 'PR Create bot', text: 'Scope analysed and expanded continuously.', metric: '91%', status: 'live' },
-            { title: 'PO Create bot', text: 'RI PR lines (CMAC, intercompany) and Mobile POs added.', metric: '88%', status: 'live' },
-            { title: 'PO Release bot', text: 'Release strategies 31 and 37 in scope.', metric: 'R31 + R37', status: 'live' },
-            { title: 'PO Acknowledgement bot', text: 'Reminder mails and Apple POs included.', metric: '−48% TAT', status: 'live' },
-            { title: 'SAP auto-create (ROMC)', text: 'Bot and SAP auto-create working together.', status: 'live' },
+            { title: 'R1 services in PRs (CMAC)', text: 'In production since Aug 2026; 7 more items added in Oct.', status: 'live' },
+            { title: 'Apple acknowledgement', text: 'Completed and in production.', status: 'live' },
+            { title: 'OCR e-invoicing', text: 'Live 22 Aug 2026: CMAC (5 vendors), Amdocs, 9 ICT vendors (T001, T080).', status: 'live' },
+            { title: 'Reports and SLA dashboards', text: 'In production, monitored and enhanced.', status: 'live' },
+            { title: 'ITR', text: 'Closed and decommissioned.', status: 'complete' },
+          ],
+        },
+        {
+          type: 'list', span: 4, rows: 2, title: 'In development',
+          items: [
+            { title: 'Deletion letter review', text: 'Good progress; drive adoption.', status: 'progress' },
+            { title: 'Virtual Pay solution', text: 'AS-IS and TO-BE documented; solution in progress.', status: 'progress' },
+            { title: 'E-invoicing cost-centre bot', text: 'Cost-centre file download and upload.', status: 'progress' },
+            { title: 'SAP e-Sourcing archive', text: 'RPA extracts of contracts and RFx events; next: OpenText validation.', status: 'progress' },
+            { title: 'Discount POs and zero-value items', text: 'Being scoped for bot creation.', status: 'planned' },
+          ],
+        },
+        {
+          type: 'list', span: 4, rows: 2, title: 'Open items from RPA governance',
+          items: [
+            { title: 'PR Create: material and service codes', text: 'Items deleted in NEDLMP cause fallouts and duplicates. Code change tested in ZP2; CR logged.', status: 'progress' },
+            { title: 'PR to PO: target value errors', text: 'Extra manual work; CMAC closed-PO commitment reconciliation under way.', status: 'progress' },
+            { title: 'PO release turnaround', text: 'Manual releases rose from 13 to 27 hours in October, mainly international POs.', status: 'confirm' },
+            { title: 'Discount and international POs', text: 'Moved from bot to manual on 26 Sep.', status: 'confirm' },
+            { title: 'CMAC invoice duplication to APS', text: 'E-invoicing challenge being resolved.', status: 'progress' },
           ],
         },
       ],
@@ -100,35 +157,23 @@ const CONFIG = {
       id: 'way-forward',
       label: 'Way forward',
       title: 'Way forward',
-      sub: 'FY27 automation pipeline and priorities',
+      sub: 'Current focus areas and decisions',
       blocks: [
         {
-          type: 'list', span: 5, rows: 2, title: 'FY27 automation pipeline',
+          type: 'steps', span: 12, rows: 2, title: 'Focus areas by stream',
           items: [
-            { title: 'IT PR upfront approval', text: 'Automate the upfront IT requisition approval step.', status: 'planned' },
-            { title: 'Release 31 for Mobile POs', text: 'Extend Release 31 automation to Mobile PO scope.', status: 'progress' },
-            { title: 'PO acknowledgement capture', text: 'Auto-capture and match Apple acknowledgements.', status: 'progress' },
-            { title: 'UiPath platform migration', text: 'Community to Enterprise edition, with platform governance.', status: 'planned' },
-            { title: 'E-invoicing and OCR', text: 'End-to-end source-to-pay invoice capture.', status: 'implemented' },
+            { title: 'Sourcing support', points: ['SAP e-Sourcing archive to OpenText', 'Order management SLA reporting', 'Ariba tasks demo to COP'] },
+            { title: 'PO management', points: ['Monitor PO release turnaround', 'Overdue POs: 30 to 15 days', 'Drive deletion letter adoption'] },
+            { title: 'Master data', points: ['Non-VAT vendors vs spend', 'Ariba SCOC version changes', 'Registration number format clean-up'] },
+            { title: 'Across streams', points: ['Work instruction revisions', 'Automation scoping', 'Cross-skilling', 'E-invoicing rollout support'] },
           ],
         },
         {
-          type: 'cards', span: 7, cols: 3, title: 'FY27 priorities',
+          type: 'asks', span: 12, title: 'Decisions requested from Telkom', note: 'Owners and dates to agree',
           items: [
-            { title: 'Procurement analytics', text: 'Faster category and spend insight.' },
-            { title: 'Exception management', text: 'Route exceptions automatically to the right owner.' },
-            { title: 'Supplier health and risk', text: 'Monitoring with early alerts.' },
-            { title: 'Lead-time prediction', text: 'Use history to reduce emergency POs.' },
-            { title: 'Budget and policy check', text: 'Automated check before PR release.' },
-            { title: 'SLA dashboard', text: 'Turnaround and volumes, by owner.', status: 'live' },
-          ],
-        },
-        {
-          type: 'asks', span: 7, title: 'Decisions requested from Telkom', note: 'Owners and dates to agree',
-          items: [
-            'Approve scope for IT PR upfront approval automation.',
-            'Confirm the UiPath Enterprise migration and licence approach.',
-            'Nominate business owners for the FY27 analytics priorities.',
+            'Agree the plan to restore discount and international POs to the bot.',
+            'Confirm NEDLMP material and service master clean-up owner and date.',
+            'Approve scope for discount PO and zero-value item automation.',
           ],
         },
       ],
