@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
-import { DOMAINS } from './domains.js'
 import CONFIG from './data.js'
 import Block from './blocks.jsx'
 
@@ -43,11 +42,6 @@ export default function App() {
           <h1>{CONFIG.domain}</h1>
           <p>Welcome · {CONFIG.period} Executive Business Review</p>
         </div>
-        <nav className="domains" aria-label="EBR domains">
-          {DOMAINS.map(d => (
-            <a key={d.key} href={d.url} aria-current={d.key === CONFIG.key ? 'page' : undefined}>{d.label}</a>
-          ))}
-        </nav>
       </header>
 
       <main className="scene" key={tab.id}>
