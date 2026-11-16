@@ -10,6 +10,31 @@ const CONFIG = {
   source: 'Procurement MBR 21 Sep 2026 · Ops EBR draft 2 · RPA governance 5 Nov 2026',
   tabs: [
     {
+      id: 'since', label: 'Since last EBR', title: 'Since the May 2026 EBR',
+      blocks: [
+        {
+          type: 'hero', items: [
+            { value: '4 of 6', label: 'May commitments delivered', sub: 'Apple ack · Mobile POs · R1 services · e-invoicing', tone: 'good', detail: { rows: [['Delivered', 'Apple acknowledgement, Release 31 for Mobile POs, R1 services (CMAC), OCR e-invoicing'], ['To confirm', 'IT PR upfront approval, UiPath platform migration']] } },
+            { value: '91%', label: 'PR Create by bot', sub: 'May EBR: 88%', tone: 'good' },
+            { value: '22 Aug', label: 'E-invoicing went live', sub: 'May EBR: blueprint sign-off' },
+            { value: '−48%', label: 'PO acknowledgement time', sub: '4 days to 2 days', tone: 'good' },
+          ],
+        },
+        {
+          type: 'journey', span: 12, rows: 4, title: 'Where we were, where we are · click a row', thenLabel: 'Last EBR · May 2026', nowLabel: 'Now · H1 FY27',
+          items: [
+            { icon: 'Bot', label: 'PR Create by bot', then: '88% (Mar 2026)', now: '91%', status: 'live' },
+            { icon: 'Send', label: 'PO Release automation', then: 'R31 + R37 added', now: '>95%', status: 'live', detail: { text: 'Now includes Mobile POs (Release 31 extension delivered).' } },
+            { icon: 'MailCheck', label: 'PO acknowledgement', then: 'Non-ack POs −36%', now: '4 → 2 days', status: 'live', detail: { text: 'Apple acknowledgements now captured automatically; vendor compliance education by buyers.' } },
+            { icon: 'UserPlus', label: 'Supplier onboarding', then: '2.9 days', now: '2.67 days', status: 'live' },
+            { icon: 'FileCheck2', label: 'OCR e-invoicing', then: 'Blueprint sign-off', now: 'Live', status: 'live', detail: { text: 'Live 22 Aug 2026: CMAC (5 vendors), Amdocs, 9 ICT vendors across T001 and T080. Open item: CMAC invoice duplication to APS.' } },
+            { icon: 'Layers', label: 'R1 services (CMAC, intercompany)', then: 'In analysis', now: 'In production', status: 'live' },
+            { icon: 'ClipboardCheck', label: 'IT PR upfront approval', then: 'FY27 pipeline', now: 'To confirm', tone: 'muted', status: 'confirm' },
+          ],
+        },
+      ],
+    },
+    {
       id: 'performance', label: 'Performance', title: 'Purchasing performance, April to September 2026',
       blocks: [
         {

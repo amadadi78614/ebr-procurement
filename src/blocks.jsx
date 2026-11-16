@@ -300,6 +300,29 @@ function Waves({ b, open }) {
   )
 }
 
+/* ---------- Then and now ---------- */
+function Journey({ b, open }) {
+  return (
+    <Card b={b} className="journey">
+      <div className="jr-head">
+        <span>{b.thenLabel || 'Last EBR'}</span><i /><span className="now">{b.nowLabel || 'Now'}</span>
+      </div>
+      <div className="jr-rows">
+        {b.items.map((r, n) => (
+          <button key={r.label} className={'jr-row' + (r.detail ? ' clickable' : '')} style={{ animationDelay: `${n * 110}ms` }}
+            onClick={r.detail ? () => open({ title: r.label, ...r.detail }) : undefined}>
+            <span className="jr-label"><Icon name={r.icon} size={16} />{r.label}</span>
+            <span className="jr-then">{r.then}</span>
+            <span className="jr-arrow" style={{ animationDelay: `${300 + n * 110}ms` }}><i /><Icons.ChevronRight size={14} /></span>
+            <span className={'jr-now ' + (r.tone || 'good')}><CountUp value={r.now} /></span>
+            {r.status ? <Pill s={r.status} /> : <span />}
+          </button>
+        ))}
+      </div>
+    </Card>
+  )
+}
+
 /* ---------- Decisions ---------- */
 function Asks({ b }) {
   return (
@@ -345,6 +368,7 @@ export default function Block({ b, open, idx }) {
     case 'waves': return <Waves b={b} open={open} />
     case 'asks': return <Asks b={b} />
     case 'units': return <Units b={b} />
+    case 'journey': return <Journey b={b} open={open} />
     default: return null
   }
 }

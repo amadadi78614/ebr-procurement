@@ -162,6 +162,27 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .units-stats span{display:block;font-size:10.5px;color:#8ea3bd}
 .units-stats b{font-size:18px;font-weight:800}
 
+/* Then and now */
+.journey{padding-bottom:10px}
+.jr-head{display:grid;grid-template-columns:1.4fr 1fr 70px 1.2fr 92px;align-items:center;gap:10px;padding:0 12px 8px;font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#6b7f99;flex-shrink:0}
+.jr-head span:first-child{grid-column:2}
+.jr-head i{display:none}
+.jr-head .now{grid-column:4;color:var(--accent)}
+.jr-rows{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px}
+.jr-row{flex:1;min-height:0;display:grid;grid-template-columns:1.4fr 1fr 70px 1.2fr 92px;align-items:center;gap:10px;padding:0 12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);animation:slideIn .55s cubic-bezier(.2,.8,.2,1) both;transition:.2s}
+.jr-row:hover{background:rgba(255,255,255,.06);border-color:color-mix(in srgb,var(--accent) 50%,transparent)}
+@keyframes slideIn{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+.jr-label{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:#dbe6f3}
+.jr-label svg{color:var(--accent);flex-shrink:0}
+.jr-then{font-size:14px;color:#7f93ad;font-weight:500}
+.jr-arrow{position:relative;height:2px;display:flex;align-items:center;justify-content:flex-end;color:var(--accent);animation:grow .7s both}
+.jr-arrow i{position:absolute;left:0;right:6px;height:2px;background:linear-gradient(90deg,transparent,var(--accent));transform-origin:left;animation:grow .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:inherit}
+@keyframes grow{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+.jr-now{font-size:20px;font-weight:800;letter-spacing:-.4px;color:#fff}
+.jr-now.good{color:#fff;text-shadow:0 0 18px color-mix(in srgb,#34d399 45%,transparent)}
+.jr-now.warn{color:#fbbf24}.jr-now.bad{color:#f87171}.jr-now.muted{color:#9fb1c8;font-size:15px;font-weight:600}
+.jr-row .pill{justify-self:end}
+
 /* Dock */
 .dock{position:relative;z-index:2;display:flex;align-items:center;gap:10px;padding:8px 28px 12px;flex-shrink:0}
 .arrow{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);transition:.2s}
@@ -188,6 +209,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .close{position:absolute;right:16px;top:16px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.07)}
 
 @media (max-height:720px){
+  .jr-now{font-size:17px}.jr-label{font-size:12px}.jr-then{font-size:12.5px}
   .top{padding:8px 24px}.scene{padding:0 24px 6px;gap:8px}.scene-head h2{font-size:22px}
   .stat{padding:10px 14px}.stat strong{font-size:30px}.stat p{margin-top:4px;font-size:12px}
   .grid{gap:10px}.card{padding:10px 12px;border-radius:14px}.dock{padding:4px 24px 8px}
