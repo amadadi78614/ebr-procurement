@@ -8,7 +8,7 @@ import CONFIG from './data.js'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Tooltip, Legend, Filler)
 ChartJS.defaults.font.family = 'Inter, system-ui, sans-serif'
-ChartJS.defaults.color = '#8ea3bd'
+ChartJS.defaults.color = '#5B6B7F'
 
 const ACC = CONFIG.accent
 const ACC2 = CONFIG.accent2 || CONFIG.accent
@@ -99,10 +99,10 @@ function Ring({ pct, size = 120, stroke = 10, label, value, color = ACC }) {
   return (
     <div className="ring" style={{ width: size }}>
       <svg viewBox={`0 0 ${size} ${size}`}>
-        <circle cx={size / 2} cy={size / 2} r={r} fill="#071224" stroke="rgba(255,255,255,.08)" strokeWidth={stroke} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="#fff" stroke="#E8EDF3" strokeWidth={stroke} />
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={stroke} strokeLinecap="round"
           strokeDasharray={c} strokeDashoffset={on ? c * (1 - Math.min(pct, 100) / 100) : c}
-          transform={`rotate(-90 ${size / 2} ${size / 2})`} style={{ transition: 'stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1)', filter: `drop-shadow(0 0 6px ${color}88)` }} />
+          transform={`rotate(-90 ${size / 2} ${size / 2})`} style={{ transition: 'stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1)' }} />
       </svg>
       <div className="ring-c"><b><CountUp value={value ?? pct + '%'} /></b></div>
       {label && <span>{label}</span>}
@@ -148,21 +148,21 @@ function Flow({ b, open }) {
 function ChartBlock({ b }) {
   const horizontal = !!b.horizontal
   const suffix = b.suffix ?? ''
-  const pal = [ACC, 'rgba(148,163,184,.55)', ACC2, '#f59e0b', '#a78bfa']
+  const pal = [ACC, '#B8C2CC', ACC2, '#FECB5E', '#6D8A9C']
   const datasets = b.datasets.map((d, n) => {
     const c = d.colors ? d.colors.map(col) : col(d.color || pal[n])
     return b.kind === 'line'
       ? { label: d.label, data: d.data, borderColor: c, backgroundColor: c + '22', fill: !!d.fill, borderWidth: d.dashed ? 1.5 : 3, borderDash: d.dashed ? [6, 6] : [], pointRadius: d.dashed ? 0 : 3, tension: 0.35 }
       : { label: d.label, data: d.data, backgroundColor: c, borderRadius: 6, maxBarThickness: horizontal ? 16 : 42 }
   })
-  const valueAxis = { min: b.min ?? 0, max: b.max, grid: { color: 'rgba(255,255,255,.06)' }, ticks: { callback: v => v + suffix, font: { size: 10 } }, border: { display: false } }
-  const catAxis = { grid: { display: false }, ticks: { font: { size: 11 }, color: '#c6d3e3' }, border: { display: false } }
+  const valueAxis = { min: b.min ?? 0, max: b.max, grid: { color: '#EEF2F6' }, ticks: { callback: v => v + suffix, font: { size: 10 } }, border: { display: false } }
+  const catAxis = { grid: { display: false }, ticks: { font: { size: 11 }, color: '#3D4752' }, border: { display: false } }
   const options = {
     responsive: true, maintainAspectRatio: false, indexAxis: horizontal ? 'y' : 'x',
     animation: { duration: 1100, easing: 'easeOutQuart' },
     plugins: {
-      legend: { display: datasets.length > 1, position: 'bottom', labels: { boxWidth: 10, boxHeight: 10, font: { size: 10 }, color: '#a9b8cc' } },
-      tooltip: { backgroundColor: '#0b1628', borderColor: 'rgba(255,255,255,.1)', borderWidth: 1, callbacks: { label: c => `${c.dataset.label ? c.dataset.label + ': ' : ''}${c.raw}${suffix}` } },
+      legend: { display: datasets.length > 1, position: 'bottom', labels: { boxWidth: 10, boxHeight: 10, font: { size: 10 }, color: '#3D4752' } },
+      tooltip: { backgroundColor: '#fff', titleColor: '#231F20', bodyColor: '#3D4752', borderColor: '#E3E8EF', borderWidth: 1, callbacks: { label: c => `${c.dataset.label ? c.dataset.label + ': ' : ''}${c.raw}${suffix}` } },
     },
     scales: horizontal ? { x: valueAxis, y: catAxis } : { x: catAxis, y: valueAxis },
   }
@@ -343,7 +343,7 @@ function Units({ b }) {
     <Card b={b}>
       <div className="units-tabs">{keys.map(k => <button key={k} className={k === u ? 'on' : ''} onClick={() => setU(k)}>{k}</button>)}</div>
       <div className="units-body" key={u}>
-        <Ring pct={d.conv} value={d.conv + '%'} size={130} stroke={11} color={d.conv >= d.target ? '#34d399' : '#f59e0b'} label="Conversion" />
+        <Ring pct={d.conv} value={d.conv + '%'} size={130} stroke={11} color={d.conv >= d.target ? '#0E9F6E' : '#E07B00'} label="Conversion" />
         <div className="units-stats">
           {d.stats.map(([l, v]) => <div key={l}><span>{l}</span><b><CountUp value={v} /></b></div>)}
           <div><span>Target</span><b>{d.target}%</b></div>

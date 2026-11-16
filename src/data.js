@@ -5,8 +5,8 @@ const CONFIG = {
   key: 'procurement',
   domain: 'Procurement',
   period: 'H1 FY27',
-  accent: '#0ea5e9',
-  accent2: '#6366f1',
+  accent: '#009FE3',
+  accent2: '#FF6F4D',
   source: 'Procurement MBR 21 Sep 2026 · Ops EBR draft 2 · RPA governance 5 Nov 2026',
   tabs: [
     {
@@ -50,8 +50,8 @@ const CONFIG = {
           datasets: [
             { label: 'Auto', data: [3, 2, 5, 1, 0, 1], color: 'accent' },
             { label: 'Bot', data: [29, 14, 16, 19, 33, 8], color: 'accent2' },
-            { label: 'Manual', data: [20, 13, 23, 42, 74, 13], color: '#f59e0b' },
-            { label: 'RFQ', data: [36, 45, 45, 38, 48, 44], color: '#64748b' },
+            { label: 'Manual', data: [20, 13, 23, 42, 74, 13], color: '#E07B00' },
+            { label: 'RFQ', data: [36, 45, 45, 38, 48, 44], color: '#9AA4B0' },
           ],
         },
         {
