@@ -330,3 +330,31 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .lead-chips span{font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;background:color-mix(in srgb,var(--accent) 10%,#fff);color:#0B4F75}
 @media (max-height:720px){.lead-text{font-size:16px}.lead-ico{width:50px;height:50px}.lead-chips{margin-top:6px}}
 .lead-card h3:empty{display:none}
+
+/* ---------- Architecture illustration ---------- */
+.arch{flex:1;display:grid;grid-template-columns:1fr 70px 1.15fr 70px 1fr;align-items:center;min-height:0}
+.arch-col{display:flex;flex-direction:column;gap:12px}
+.arch-src{position:relative;display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;background:#F7F9FB;border:1px solid #E3E8EF;animation:pop .5s both}
+.arch-src .ico,.arch-out .ico{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.arch-src b{display:block;font-size:14px}.arch-src small{font-size:11.5px;color:#6B7785}
+.arch-src.retire{opacity:.6;border-style:dashed}
+.arch-src.retire .ico{background:#B8C2CC}
+.arch-src.retire b{text-decoration:line-through;text-decoration-color:#D84851;text-decoration-thickness:2px}
+.arch-src.retire em{position:absolute;top:-9px;right:10px;font-style:normal;font-size:9.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;background:#FDECEE;color:#B4232C;padding:2px 8px;border-radius:999px}
+.arch-flow{display:flex;flex-direction:column;justify-content:center;gap:26px;height:100%}
+.arch-flow i{display:block;height:3px;border-radius:2px;background:repeating-linear-gradient(90deg,var(--accent) 0 8px,transparent 8px 14px);background-size:28px 3px;animation:march 1s linear infinite}
+.arch-core{display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 16px;border-radius:20px;color:#fff;background:linear-gradient(140deg,var(--accent),color-mix(in srgb,var(--accent) 55%,var(--accent2)));box-shadow:0 18px 40px color-mix(in srgb,var(--accent) 30%,transparent);animation:pop .6s .2s both;text-align:center}
+.arch-core .kicker{color:rgba(255,255,255,.85)}
+.arch-core>b{font-size:20px;letter-spacing:-.3px}
+.arch-core .pill{background:#fff}
+.mini-org{width:100%;max-width:240px;height:auto;max-height:120px}
+.mo-box{fill:rgba(255,255,255,.25);stroke:#fff;stroke-width:1.2;opacity:0;transform:translateY(4px);transition:opacity .4s,transform .4s;transform-box:fill-box}
+.mo-box.hi{fill:#fff}
+.mo-box.on{opacity:1;transform:none}
+.mo-ln{fill:none;stroke:rgba(255,255,255,.8);stroke-width:1.2;stroke-dasharray:80;stroke-dashoffset:80;transition:stroke-dashoffset .6s}
+.mo-ln.on{stroke-dashoffset:0}
+.arch-out{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;background:#fff;border:1px solid #E3E8EF;cursor:pointer;text-align:left;animation:pop .5s both;transition:.2s;font:inherit}
+.arch-out:hover{border-color:var(--accent);transform:translateX(3px);box-shadow:0 6px 16px rgba(16,24,40,.08)}
+.arch-out b{flex:1;font-size:14px;color:#231F20}
+.arch-out em{font-style:normal;font-size:11px;font-weight:700;color:#0E9F6E;background:#E3F8EE;padding:3px 8px;border-radius:999px;white-space:nowrap}
+@media (max-height:720px){.arch-src,.arch-out{padding:8px 12px}.arch-col{gap:8px}.mini-org{max-height:80px}.arch-core{padding:12px}}

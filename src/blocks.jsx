@@ -356,6 +356,59 @@ function Lead({ b }) {
   )
 }
 
+
+/* ---------- Solution architecture illustration ---------- */
+function MiniOrg() {
+  const on = useMounted(300)
+  const box = (x, y, d, hi) => <rect key={x + '-' + y} x={x} y={y} width="34" height="16" rx="4" className={'mo-box' + (hi ? ' hi' : '') + (on ? ' on' : '')} style={{ transitionDelay: d + 'ms' }} />
+  const ln = (x1, y1, x2, y2, d) => <path key={x1 + y1 + x2 + y2} d={`M${x1} ${y1} V${(y1 + y2) / 2} H${x2} V${y2}`} className={'mo-ln' + (on ? ' on' : '')} style={{ transitionDelay: d + 'ms' }} />
+  return (
+    <svg viewBox="0 0 200 110" className="mini-org" aria-hidden="true">
+      {ln(100, 22, 40, 46, 200)}{ln(100, 22, 100, 46, 250)}{ln(100, 22, 160, 46, 300)}
+      {ln(40, 62, 20, 86, 450)}{ln(40, 62, 60, 86, 500)}{ln(100, 62, 100, 86, 550)}{ln(160, 62, 140, 86, 600)}{ln(160, 62, 180, 86, 650)}
+      {box(83, 6, 0, true)}
+      {box(23, 46, 300)}{box(83, 46, 350)}{box(143, 46, 400)}
+      {box(3, 86, 700)}{box(43, 86, 750)}{box(83, 86, 800, true)}{box(123, 86, 850)}{box(163, 86, 900)}
+    </svg>
+  )
+}
+function Arch({ b, open }) {
+  const outs = b.outputs.map(o => ({ ...o, label: o.name }))
+  const ob = { ...b, items: outs }
+  return (
+    <Card b={b} className="arch-card">
+      <div className="arch">
+        <div className="arch-col">
+          {b.sources.map((s, n) => (
+            <div key={s.name} className={'arch-src' + (s.retire ? ' retire' : '')} style={{ animationDelay: `${n * 120}ms` }}>
+              <span className="ico"><Icon name={s.icon} size={20} /></span>
+              <div><b>{s.name}</b>{s.sub && <small>{s.sub}</small>}</div>
+              {s.retire && <em>Retire</em>}
+            </div>
+          ))}
+        </div>
+        <div className="arch-flow"><i /><i /></div>
+        <div className="arch-core">
+          <span className="kicker">{b.core.kicker}</span>
+          <b>{b.core.name}</b>
+          <MiniOrg />
+          {b.core.status && <Pill s={b.core.status} text={b.core.statusText} />}
+        </div>
+        <div className="arch-flow"><i /><i /><i /><i /></div>
+        <div className="arch-col outs">
+          {outs.map((o, n) => (
+            <button key={o.name} className="arch-out" style={{ animationDelay: `${400 + n * 120}ms` }} onClick={spot(ob, open, o)}>
+              <span className="ico"><Icon name={o.icon} size={18} /></span>
+              <b>{o.name}</b>
+              {o.metric && <em>{o.metric}</em>}
+            </button>
+          ))}
+        </div>
+      </div>
+    </Card>
+  )
+}
+
 /* ---------- Then and now ---------- */
 function Journey({ b, open }) {
   return (
@@ -427,6 +480,7 @@ export default function Block({ b, open, idx }) {
     case 'journey': return <Journey b={b} open={open} />
     case 'track': return <Track b={b} />
     case 'lead': return <Lead b={b} />
+    case 'arch': return <Arch b={b} open={open} />
     default: return null
   }
 }
