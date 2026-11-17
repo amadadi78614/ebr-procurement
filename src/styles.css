@@ -253,3 +253,40 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .icards.list .icard small{font-size:12px}
 .icards.list .lst-side{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .icards.list .team{margin-top:0;align-self:flex-end}
+
+/* ---------- Executive spotlight ---------- */
+.spot-wrap{position:fixed;inset:0;z-index:20;display:grid;place-items:center;background:rgba(15,23,42,.42);backdrop-filter:blur(6px);animation:fade .2s both}
+.spot{position:relative;width:min(1000px,90vw);max-height:88vh;overflow:auto;background:#fff;border-radius:24px;padding:30px 40px 26px;box-shadow:0 30px 80px rgba(15,23,42,.3);border-top:6px solid var(--accent);animation:spotIn .35s cubic-bezier(.2,.8,.2,1) both;display:flex;flex-direction:column;gap:22px}
+@keyframes spotIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.spot-top{display:flex;align-items:center;gap:12px}
+.spot-count{margin-left:auto;font-size:12px;font-weight:600;color:#8A96A3}
+.spot-x{border:0;background:#F1F4F8;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:#231F20}
+.spot-x:hover{background:#E2E8F0}
+.spot-head{display:flex;gap:20px;align-items:center}
+.spot-ico{flex:none;width:76px;height:76px;border-radius:22px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 12px 28px color-mix(in srgb,var(--accent) 35%,transparent)}
+.spot-head h2{margin:0;font-size:36px;line-height:1.1;letter-spacing:-.8px;color:#231F20}
+.spot-head p{margin:6px 0 0;font-size:17px;color:#5B6B7F}
+.spot-tags{display:flex;gap:8px;align-items:center;margin-top:10px}
+.spot-tags .pill{font-size:11.5px;padding:4px 11px}.spot-tags .team{margin:0;font-size:11.5px;padding:4px 10px}
+.spot-shift{display:grid;grid-template-columns:1fr auto 1.3fr;align-items:center;gap:20px;padding:22px 26px;border-radius:18px;background:linear-gradient(90deg,#F4F6F9,color-mix(in srgb,var(--accent) 9%,#fff))}
+.spot-shift span{display:block;font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#8A96A3;margin-bottom:6px}
+.spot-shift b{font-size:24px;font-weight:600;color:#8A96A3}
+.spot-shift i{color:var(--accent);animation:nudge 1.4s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(6px)}}
+.spot-shift .now span{color:var(--accent)}
+.spot-shift strong{font-size:40px;font-weight:800;letter-spacing:-1px;color:var(--accent);line-height:1.05}
+.spot-big{font-size:64px;font-weight:800;letter-spacing:-2px;line-height:1;color:var(--accent)}
+.spot-shift strong.good,.spot-big.good{color:#0E9F6E}.spot-shift strong.warn,.spot-big.warn{color:#E07B00}.spot-shift strong.bad,.spot-big.bad{color:#D84851}.spot-shift strong.muted{color:#8A96A3}
+.spot-lead{margin:0;font-size:21px;line-height:1.45;color:#231F20;font-weight:500;padding-left:18px;border-left:4px solid var(--accent2)}
+.spot-facts{display:grid;gap:14px}
+.spot-facts div{padding:18px 20px;border-radius:16px;background:#F7F9FB;border:1px solid #E3E8EF;animation:pop .45s both}
+.spot-facts span{display:block;font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.spot-facts b{font-size:17px;font-weight:600;line-height:1.4;color:#231F20}
+.spot-points{display:flex;flex-wrap:wrap;gap:10px}
+.spot-points span{font-size:16px;font-weight:600;padding:10px 16px;border-radius:12px;background:color-mix(in srgb,var(--accent) 9%,#fff);color:#0B4F75;animation:pop .45s both}
+.spot-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:8px;border-top:1px solid #EEF2F6}
+.spot-nav button{border:0;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;cursor:pointer}
+.spot-dots{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+.spot-dots i{width:9px;height:9px;border-radius:50%;background:#D5DDE6;cursor:pointer;transition:.2s}
+.spot-dots i.on{width:26px;border-radius:6px;background:var(--accent)}
+@media (max-height:720px){.spot{padding:22px 30px 18px;gap:16px}.spot-head h2{font-size:30px}.spot-ico{width:62px;height:62px}.spot-big{font-size:52px}.spot-shift strong{font-size:34px}.spot-lead{font-size:18px}}

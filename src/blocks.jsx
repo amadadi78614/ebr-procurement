@@ -24,7 +24,7 @@ export function Pill({ s, text }) {
   return <span className={'pill ' + tone}>{text || label}</span>
 }
 
-function Icon({ name, size = 20 }) {
+export function Icon({ name, size = 20 }) {
   const C = Icons[name] || Icons.Sparkles
   return <C size={size} strokeWidth={1.75} />
 }
@@ -76,13 +76,27 @@ function Card({ b, children, className = '', onClick }) {
   )
 }
 
+
+/* ---------- Spotlight payloads ---------- */
+const toSpot = (x, b) => ({
+  key: x.name || x.label, title: x.name || x.label, tag: (b.title || '').split(' · click')[0], icon: x.icon, status: x.status, statusText: x.statusText,
+  team: x.team, value: x.value ?? x.metric, then: x.then, now: x.now, thenLabel: b.thenLabel, nowLabel: b.nowLabel,
+  line: x.line || x.sub, tone: { green: 'good', amber: 'warn', red: 'bad' }[x.tone] || x.tone, pct: x.pct, ...(x.detail || {}),
+})
+function spot(b, open, item, all = true) {
+  const pool = all ? b.items : b.items.filter(x => x.detail)
+  const list = pool.map(x => toSpot(x, b))
+  const i = list.findIndex(p => p.key === (item.name || item.label))
+  return () => open({ list, i })
+}
+
 /* ---------- Hero stats ---------- */
 function Hero({ b, open }) {
   return (
     <div className="hero" style={{ gridColumn: `span ${b.span || 12}`, gridTemplateColumns: `repeat(${b.items.length}, 1fr)` }}>
       {b.items.map((k, n) => (
         <article key={k.label} className={'stat' + (k.detail ? ' clickable' : '')} style={{ animationDelay: `${n * 90}ms` }}
-          onClick={k.detail ? () => open({ title: k.label, ...k.detail }) : undefined}>
+          onClick={k.detail ? spot(b, open, k, false) : undefined}>
           <strong className={k.tone || ''}><CountUp value={k.value} /></strong>
           <p>{k.label}</p>
           {k.sub && <small>{k.sub}</small>}
@@ -114,7 +128,7 @@ function Rings({ b, open }) {
     <Card b={b}>
       <div className="rings">
         {b.items.map(k => (
-          <div key={k.label} className={k.detail ? 'clickable' : ''} onClick={k.detail ? () => open({ title: k.label, ...k.detail }) : undefined}>
+          <div key={k.label} className={k.detail ? 'clickable' : ''} onClick={k.detail ? spot(b, open, k, false) : undefined}>
             <Ring pct={k.pct} value={k.value} label={k.label} color={col(k.color || 'accent')} size={b.size || 120} />
             {k.sub && <small className="ring-sub">{k.sub}</small>}
           </div>
@@ -132,7 +146,7 @@ function Flow({ b, open }) {
         <div className="flow-line"><i /></div>
         {b.items.map((s, n) => (
           <button key={s.name} className="node" style={{ animationDelay: `${n * 150}ms` }}
-            onClick={s.detail ? () => open({ title: s.name, tag: b.title, ...s.detail }) : undefined}>
+            onClick={spot(b, open, s)}>
             <Ring pct={s.pct} value={s.value} size={b.size || 104} stroke={9} color={col(s.color || 'accent')} />
             <b>{s.name}</b>
             {s.status && <Pill s={s.status} />}
@@ -198,7 +212,7 @@ function Tiles({ b, open }) {
       <div className="tiles" style={{ gridTemplateColumns: `repeat(${b.cols || 4}, 1fr)` }}>
         {b.items.map((t, n) => (
           <button key={t.label} className={'tile ' + (t.tone || 'green')} style={{ animationDelay: `${n * 40}ms` }}
-            onClick={t.detail ? () => open({ title: t.label, ...t.detail }) : undefined}>
+            onClick={spot(b, open, t)}>
             <b>{t.value}</b><span>{t.label}</span>
           </button>
         ))}
@@ -215,7 +229,7 @@ function Cards({ b, open }) {
       <div className={'icards' + (b.list ? ' list' : (b.cols || 3) <= 3 ? ' roomy' : '')} style={{ gridTemplateColumns: `repeat(${b.cols || 3}, 1fr)` }}>
         {b.items.map((it, n) => (
           <button key={it.name} className={'icard' + (b.agent ? ' agent' : '')} style={{ animationDelay: `${n * 60}ms` }}
-            onClick={it.detail ? () => open({ title: it.name, tag: b.title, ...it.detail }) : undefined}>
+            onClick={spot(b, open, it)}>
             {b.list ? <>
               <span className="ico"><Icon name={it.icon} /></span>
               <span className="lst-body"><b>{it.name}</b>{it.line && <small>{it.line}</small>}</span>
@@ -316,8 +330,8 @@ function Journey({ b, open }) {
       </div>
       <div className="jr-rows">
         {b.items.map((r, n) => (
-          <button key={r.label} className={'jr-row' + (r.detail ? ' clickable' : '')} style={{ animationDelay: `${n * 110}ms` }}
-            onClick={r.detail ? () => open({ title: r.label, ...r.detail }) : undefined}>
+          <button key={r.label} className="jr-row clickable" style={{ animationDelay: `${n * 110}ms` }}
+            onClick={spot(b, open, r)}>
             <span className="jr-label"><Icon name={r.icon} size={16} />{r.label}</span>
             <span className="jr-then">{r.then}</span>
             <span className="jr-arrow" style={{ animationDelay: `${300 + n * 110}ms` }}><i /><Icons.ChevronRight size={14} /></span>
