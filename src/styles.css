@@ -321,3 +321,4 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .owner b{font-weight:700;color:#fff;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px;padding:2px 10px;font-size:11px}
 .icards.list .icard{padding:10px 14px}
 @media (max-height:720px){.icards.list .icard b{font-size:14px}.icards.list .ico{width:36px;height:36px}}
+.tk.here{flex-wrap:nowrap}
