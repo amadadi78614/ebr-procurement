@@ -358,3 +358,18 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .arch-out b{flex:1;font-size:14px;color:#231F20}
 .arch-out em{font-style:normal;font-size:11px;font-weight:700;color:#0E9F6E;background:#E3F8EE;padding:3px 8px;border-radius:999px;white-space:nowrap}
 @media (max-height:720px){.arch-src,.arch-out{padding:8px 12px}.arch-col{gap:8px}.mini-org{max-height:80px}.arch-core{padding:12px}}
+
+.icard .ifoot{margin:auto 0 0;padding-top:12px;border-top:1px dashed #D5DDE6;font-size:14px;line-height:1.4;color:#231F20;font-weight:500}
+.icard .ifoot b{display:block;font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent2);margin-bottom:4px}
+.icards.roomy .icard .ifoot{font-size:15.5px}
+@media (max-height:720px){.icard .ifoot{font-size:12.5px;padding-top:8px}}
+
+.icards.feature .icard{justify-content:flex-start;padding:22px;gap:8px}
+.icards.feature .ico{width:72px;height:72px;border-radius:20px}
+.icards.feature .ico svg{width:34px;height:34px}
+.icards.feature .icard-top{margin-bottom:14px}
+.icards.feature .icard b{font-size:22px;line-height:1.2}
+.icards.feature .icard small{font-size:15px}
+.icards.feature .icard .ifoot{font-size:18px;font-weight:600}
+.icards.feature .icard .ifoot b{font-size:11px}
+@media (max-height:720px){.icards.feature .ico{width:52px;height:52px}.icards.feature .icard b{font-size:18px}.icards.feature .icard .ifoot{font-size:14px}.icards.feature .icard{padding:14px}}

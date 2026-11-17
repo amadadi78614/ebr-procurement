@@ -226,7 +226,7 @@ function Tiles({ b, open }) {
 function Cards({ b, open }) {
   return (
     <Card b={b}>
-      <div className={'icards' + (b.list ? ' list' : (b.cols || 3) <= 3 ? ' roomy' : '')} style={{ gridTemplateColumns: `repeat(${b.cols || 3}, 1fr)` }}>
+      <div className={'icards' + (b.feature ? ' feature' : '') + (b.list ? ' list' : (b.cols || 3) <= 3 ? ' roomy' : '')} style={{ gridTemplateColumns: `repeat(${b.cols || 3}, 1fr)` }}>
         {b.items.map((it, n) => (
           <button key={it.name} className={'icard' + (b.agent ? ' agent' : '')} style={{ animationDelay: `${n * 60}ms` }}
             onClick={spot(b, open, it)}>
@@ -239,6 +239,7 @@ function Cards({ b, open }) {
             <b>{it.name}</b>
             {it.line && <small>{it.line}</small>}
             {it.team && <span className="team">{it.team}</span>}
+            {it.foot && <p className="ifoot">{b.footLabel && <b>{b.footLabel}</b>}{it.foot}</p>}
             </>}
             {it.metric && <em>{it.metric}</em>}
           </button>
