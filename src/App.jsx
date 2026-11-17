@@ -53,7 +53,10 @@ export default function App() {
 
       <main className="scene" key={tab.id}>
         <div className="scene-head">
-          <span className="kicker">{String(i + 1).padStart(2, '0')} · {tab.label}</span>
+          <div className="scene-k">
+            <span className="kicker">{String(i + 1).padStart(2, '0')} · {tab.label}</span>
+            {tab.owner && <span className="owner"><b>{tab.owner.name}</b>{tab.owner.role}</span>}
+          </div>
           <h2>{tab.title}</h2>
         </div>
         <div className="grid" style={{ gridTemplateRows: tab.blocks[0].type === 'hero' ? 'auto' : undefined }}>

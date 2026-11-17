@@ -101,32 +101,7 @@ const CONFIG = {
       ],
     },
     {
-      id: 'rpa', label: 'Automation', title: 'Four bots run the purchase-to-order chain',
-      blocks: [
-        {
-          type: 'flow', span: 12, rows: 3, title: 'PR to PO acknowledgement · click a stage',
-          items: [
-            { name: 'PR Create', pct: 88, value: '>88%', status: 'live', detail: { text: 'Requisition creation from NEDLMP with SAP eligibility checks.', rows: [['Open item', 'Deleted material/service codes in NEDLMP cause fallouts; code change tested in ZP2, CR logged.']] } },
-            { name: 'PR to PO', pct: 90, value: '~90%', status: 'live', color: 'accent2', detail: { rows: [['Open item', 'Target value exceed errors; CMAC closed-PO commitments being reconciled.'], ['Change', 'Discount and international POs moved to manual on 26 Sep.']] } },
-            { name: 'PO Release', pct: 95, value: '>95%', status: 'live', detail: { text: 'Release strategies 31 and 37, incl. Mobile POs. Release time per PO 2–4 minutes.', rows: [['Watch', 'Manual releases rose from 13 to 27 hours in October (mainly international).']] } },
-            { name: 'PO Ack', pct: 90, value: '>90%', status: 'live', color: 'accent2', detail: { text: 'Supplier acknowledgement capture and reminders, incl. Apple. No open issues.' } },
-          ],
-        },
-        {
-          type: 'cards', span: 12, cols: 6, rows: 2, title: 'Delivered and in build',
-          items: [
-            { icon: 'FileCheck2', name: 'OCR e-invoicing', line: 'Live 22 Aug · CMAC, Amdocs, 9 ICT vendors', status: 'live' },
-            { icon: 'Layers', name: 'R1 services (CMAC)', line: 'In production · 7 items added', status: 'live' },
-            { icon: 'Apple', name: 'Apple acknowledgement', line: 'In production', status: 'live' },
-            { icon: 'Trash2', name: 'Deletion letter review', line: 'Good progress', status: 'progress' },
-            { icon: 'CreditCard', name: 'Virtual Pay', line: 'AS-IS / TO-BE done', status: 'progress' },
-            { icon: 'Archive', name: 'e-Sourcing archive', line: 'RPA extracts to OpenText', status: 'progress' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'analytics', label: 'Analytics', title: 'Control, visibility and decision support',
+      id: 'analytics', owner: {   "name": "Dani Viljoen",   "role": "WNS Analytics" }, label: 'Analytics', title: 'Control, visibility and decision support',
       blocks: [
         {
           type: 'hero', items: [
@@ -154,7 +129,32 @@ const CONFIG = {
       ],
     },
     {
-      id: 'contract', label: 'Contract use case', title: 'Contract operationalisation: contract pack to SAP-ready',
+      id: 'rpa', owner: {   "name": "Mohamed Nomani",   "role": "WNS Transformation · part of Capgemini" }, label: 'Automation', title: 'Four bots run the purchase-to-order chain',
+      blocks: [
+        {
+          type: 'flow', span: 12, rows: 3, title: 'PR to PO acknowledgement · click a stage',
+          items: [
+            { name: 'PR Create', pct: 88, value: '>88%', status: 'live', detail: { text: 'Requisition creation from NEDLMP with SAP eligibility checks.', rows: [['Open item', 'Deleted material/service codes in NEDLMP cause fallouts; code change tested in ZP2, CR logged.']] } },
+            { name: 'PR to PO', pct: 90, value: '~90%', status: 'live', color: 'accent2', detail: { rows: [['Open item', 'Target value exceed errors; CMAC closed-PO commitments being reconciled.'], ['Change', 'Discount and international POs moved to manual on 26 Sep.']] } },
+            { name: 'PO Release', pct: 95, value: '>95%', status: 'live', detail: { text: 'Release strategies 31 and 37, incl. Mobile POs. Release time per PO 2–4 minutes.', rows: [['Watch', 'Manual releases rose from 13 to 27 hours in October (mainly international).']] } },
+            { name: 'PO Ack', pct: 90, value: '>90%', status: 'live', color: 'accent2', detail: { text: 'Supplier acknowledgement capture and reminders, incl. Apple. No open issues.' } },
+          ],
+        },
+        {
+          type: 'cards', span: 12, cols: 6, rows: 2, title: 'Delivered and in build',
+          items: [
+            { icon: 'FileCheck2', name: 'OCR e-invoicing', line: 'Live 22 Aug · CMAC, Amdocs, 9 ICT vendors', status: 'live' },
+            { icon: 'Layers', name: 'R1 services (CMAC)', line: 'In production · 7 items added', status: 'live' },
+            { icon: 'Apple', name: 'Apple acknowledgement', line: 'In production', status: 'live' },
+            { icon: 'Trash2', name: 'Deletion letter review', line: 'Good progress', status: 'progress' },
+            { icon: 'CreditCard', name: 'Virtual Pay', line: 'AS-IS / TO-BE done', status: 'progress' },
+            { icon: 'Archive', name: 'e-Sourcing archive', line: 'RPA extracts to OpenText', status: 'progress' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'contract', owner: {   "name": "Mohamed Nomani",   "role": "WNS Transformation · part of Capgemini" }, label: 'Contract use case', title: 'Contract operationalisation: contract pack to SAP-ready',
       blocks: [
         {
           type: 'cards', span: 5, rows: 3, cols: 1, list: true, title: 'One WNS team, with Telkom · click for detail',
@@ -188,8 +188,12 @@ const CONFIG = {
     },
     {
       "id": "ai",
-      "label": "AI journey",
-      "title": "WNS, part of Capgemini, is taking Telkom on the AI journey",
+      "label": "Transformation and AI",
+      "owner": {
+        "name": "Mohamed Nomani",
+        "role": "WNS Transformation · part of Capgemini"
+      },
+      "title": "From bots that execute to AI that checks contracts",
       "blocks": [
         {
           "type": "hero",
@@ -201,15 +205,16 @@ const CONFIG = {
               "tone": "good"
             },
             {
+              "value": "4 → 2",
+              "label": "Days to PO acknowledgement",
+              "sub": "Since the May EBR",
+              "tone": "good"
+            },
+            {
               "value": "1",
               "label": "AI POC on real Telkom contracts",
               "sub": "Contract operationalisation",
               "tone": "good"
-            },
-            {
-              "value": "9",
-              "label": "Analytics products",
-              "sub": "P2P data foundation · Power BI org app"
             },
             {
               "value": "Pilot",
@@ -222,26 +227,25 @@ const CONFIG = {
           "type": "track",
           "span": 12,
           "rows": 2,
-          "title": "How we take AI from idea to value · where contract operationalisation is today",
-          "at": 3,
-          "flag": "contract operationalisation"
+          "title": "Automation to AI, step by step · where contract operationalisation is today",
+          "at": 3
         },
         {
           "type": "waves",
           "big": true,
           "span": 12,
           "rows": 4,
-          "title": "Done, under way, next 90 days",
+          "title": "WNS Transformation portfolio · done, under way, next 90 days",
           "items": [
             {
-              "when": "Done · proven with Telkom",
-              "name": "Built and in use",
+              "when": "Done · live at Telkom",
+              "name": "Delivered",
               "tone": "done",
               "items": [
                 "PR, PO Release and acknowledgement bots live",
-                "Contract POC: pack in, SAP readiness report out",
-                "P2P data foundation and one Power BI org app",
-                "Duplicate payment monitoring"
+                "OCR e-invoicing live since 22 Aug",
+                "Contract operationalisation POC on real contracts",
+                "Virtual Pay AS-IS / TO-BE designed"
               ]
             },
             {
@@ -250,8 +254,8 @@ const CONFIG = {
               "tone": "doing",
               "items": [
                 "Moving the contract POC into Telkom's enterprise AI environment",
-                "Designing human review points before SAP capture",
-                "Bot events connected into the P2P data layer"
+                "UiPath platform usage and renewal review",
+                "Deletion rules and discount PO automation"
               ]
             },
             {
@@ -259,9 +263,9 @@ const CONFIG = {
               "name": "What we will prove next",
               "tone": "next",
               "items": [
-                "Governed pilot on live contract packs",
-                "Measure: blockers caught before SAP, review time, leakage avoided",
-                "First exception triage agent on bot failures"
+                "Governed contract pilot on live contract packs",
+                "Exception triage agent on bot failures",
+                "Measure: blockers before SAP, touches avoided"
               ]
             }
           ]
