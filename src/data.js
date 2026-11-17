@@ -157,10 +157,10 @@ const CONFIG = {
       id: 'contract', owner: {   "name": "Mohamed Nomani",   "role": "WNS Transformation · part of Capgemini" }, label: 'Contract use case', title: 'Contract operationalisation: contract pack to SAP-ready',
       blocks: [
         {
-          type: 'cards', span: 5, rows: 3, cols: 1, list: true, title: 'One WNS team, with Telkom · click for detail',
+          type: 'cards', span: 5, rows: 3, cols: 1, list: true, title: 'Who does what · click for detail',
           items: [
-            { icon: 'Workflow', name: 'WNS Transformation', line: 'Origination · workflow design · RPA and SAP handover', status: 'live', statusText: 'Since Oct 2026', team: 'BPET', detail: { rows: [['Role', 'Identified the contract-to-SAP gap through the RPA and P2P control tower work; designs the workflow, human review points and SAP handover'], ['Links to', 'PR and PO bots, P2P control tower, exception triage']] } },
-            { icon: 'Brain', name: 'WNS Analytics', line: 'Data foundation · AI readiness assessor · evidence reporting', status: 'live', statusText: 'POC shown', team: 'Analytics', detail: { rows: [['Role', 'P2P data foundation, contract views across Ariba and SAP, AI assessment and evidence-cited reporting'], ['Links to', 'Power BI org app, contract management views']] } },
+            { icon: 'Workflow', name: 'WNS Transformation', line: 'Originated and leads the POC · workflow design · SAP handover', status: 'live', statusText: 'POC owner', team: 'BPET', detail: { rows: [['Role', 'Originated the use case from the RPA and P2P control tower work (Oct 2026) and leads the POC: contract-to-SAP readiness logic, human review points and SAP handover'], ['Now', 'Moving the POC into Telkom\'s enterprise AI environment'], ['Links to', 'PR and PO bots, exception triage']] } },
+            { icon: 'Brain', name: 'WNS Analytics', line: 'Data foundation · contract views across Ariba and SAP', status: 'live', statusText: 'Supporting', team: 'Analytics', detail: { rows: [['Role', 'P2P data foundation and contract visibility across Ariba and SAP that the POC draws on'], ['Links to', 'Power BI org app, contract management views']] } },
             { icon: 'Building2', name: 'Telkom Procurement', line: 'Contract owners · reviewers · data sovereignty', status: 'confirm', statusText: 'Sponsor', team: 'Telkom', detail: { text: 'Owns the contracts and the human sign-off before SAP capture. Analysis runs within Telkom\'s AI framework.' } },
           ],
         },
