@@ -212,13 +212,20 @@ function Tiles({ b, open }) {
 function Cards({ b, open }) {
   return (
     <Card b={b}>
-      <div className={'icards' + ((b.cols || 3) <= 3 ? ' roomy' : '')} style={{ gridTemplateColumns: `repeat(${b.cols || 3}, 1fr)` }}>
+      <div className={'icards' + (b.list ? ' list' : (b.cols || 3) <= 3 ? ' roomy' : '')} style={{ gridTemplateColumns: `repeat(${b.cols || 3}, 1fr)` }}>
         {b.items.map((it, n) => (
           <button key={it.name} className={'icard' + (b.agent ? ' agent' : '')} style={{ animationDelay: `${n * 60}ms` }}
             onClick={it.detail ? () => open({ title: it.name, tag: b.title, ...it.detail }) : undefined}>
-            <div className="icard-top"><span className="ico"><Icon name={it.icon} /></span>{it.status && <Pill s={it.status} />}</div>
+            {b.list ? <>
+              <span className="ico"><Icon name={it.icon} /></span>
+              <span className="lst-body"><b>{it.name}</b>{it.line && <small>{it.line}</small>}</span>
+              <span className="lst-side">{it.status && <Pill s={it.status} text={it.statusText} />}{it.team && <span className="team">{it.team}</span>}</span>
+            </> : <>
+            <div className="icard-top"><span className="ico"><Icon name={it.icon} /></span>{it.status && <Pill s={it.status} text={it.statusText} />}</div>
             <b>{it.name}</b>
             {it.line && <small>{it.line}</small>}
+            {it.team && <span className="team">{it.team}</span>}
+            </>}
             {it.metric && <em>{it.metric}</em>}
           </button>
         ))}

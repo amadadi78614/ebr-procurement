@@ -7,7 +7,7 @@ const CONFIG = {
   period: 'H1 FY27',
   accent: '#009FE3',
   accent2: '#FF6F4D',
-  source: 'Procurement MBR 21 Sep 2026 · Ops EBR draft 2 · RPA governance 5 Nov 2026',
+  source: 'WNS Operations, Transformation and Analytics · Procurement MBR 21 Sep 2026 · RPA governance 5 Nov 2026',
   tabs: [
     {
       id: 'since', label: 'Since last EBR', title: 'Since the May 2026 EBR',
@@ -126,15 +126,46 @@ const CONFIG = {
       ],
     },
     {
-      id: 'ai', label: 'AI opportunities', title: 'From bots that execute to agents that assist',
+      id: 'analytics', label: 'Analytics', title: 'Control, visibility and decision support',
       blocks: [
         {
-          type: 'stairs', span: 5, rows: 3, title: 'Procurement automation maturity', current: 1, target: 3, targetLabel: '6–12 months',
-          levels: ['Manual', 'Rules-based RPA', 'Connected visibility', 'Agent-assisted', 'Autonomous'],
-          footnote: 'Next: connect PR, PO, release and acknowledgement events into one timeline.',
+          type: 'hero', items: [
+            { value: '9', label: 'Analytics initiatives', sub: 'Six months of collaborative delivery', tone: 'good' },
+            { value: '1', label: 'Power BI org app', sub: 'Central maintenance, BU row-level security' },
+            { value: 'Ongoing', label: 'Duplicate payment monitoring', sub: 'Further duplicates intercepted', tone: 'good' },
+            { value: 'Live', label: 'SLA reporting', sub: 'In-month visibility, less manual effort', tone: 'good' },
+          ],
         },
         {
-          type: 'stepper', span: 7, rows: 3, title: 'Flagship pilot · ContractOps AI', note: '90-day pilot proposal · not live',
+          type: 'cards', span: 12, rows: 3, cols: 5, title: 'WNS Analytics · six months in review · click for detail',
+          items: [
+            { icon: 'Copy', name: 'Duplicate payments', line: 'Cash leakage prevention', status: 'live', statusText: 'Expanding', team: 'Analytics', detail: { text: 'Ongoing monitoring identifies and prevents duplicate-payment risk; further potential duplicates intercepted this period.' } },
+            { icon: 'ScanText', name: 'OCR and Avvaneo views', line: 'Onboarding monitoring', status: 'live', statusText: 'Expanding', team: 'Analytics', detail: { text: 'Stabilised data refreshes, supplier-onboarding monitoring and early issue detection.' } },
+            { icon: 'FileText', name: 'Contract management', line: 'Ariba and SAP visibility', status: 'live', statusText: 'Expanding', team: 'Analytics', detail: { text: 'Open-order views, less manual effort in contract and order oversight. Feeds contract operationalisation.' } },
+            { icon: 'Database', name: 'P2P data foundation', line: 'MANCO, SLA and R1 views', status: 'live', statusText: 'Expanding', team: 'Analytics + Transformation', detail: { text: 'Underpins MANCO views, SLA reporting and operational queries, with R1-service tracking.' } },
+            { icon: 'Link', name: 'BCX integration', line: 'Cross-entity visibility', status: 'live', statusText: 'Expanding', team: 'Analytics', detail: { text: 'Repeatable updates for spend, open orders and B-BBEE views.' } },
+            { icon: 'LayoutDashboard', name: 'Power BI org app', line: 'Scalable reporting governance', status: 'live', statusText: 'Expanding', team: 'Analytics' },
+            { icon: 'Gauge', name: 'SLA reporting', line: 'Service performance automation', status: 'live', statusText: 'Expanding', team: 'Analytics' },
+            { icon: 'Globe', name: 'Huawei forex orders', line: 'Hedging accuracy, forex exposure', status: 'progress', team: 'Analytics', detail: { text: 'Order-value and delivery-date changes over time; GRNs linked back to orders.' } },
+            { icon: 'Split', name: 'Segmentation and deviations', line: 'Move to live apps', status: 'progress', team: 'Analytics', detail: { text: 'Interim manual views and reconciliation between legacy and new datasets.' } },
+            { icon: 'Bot', name: 'Bots and data, one timeline', line: 'RPA events into the data layer', status: 'planned', team: 'Transformation + Analytics', detail: { text: 'Connect PR, PO, release and acknowledgement events into the P2P data foundation: the base for the control tower and exception triage agent.' } },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'ai', label: 'AI opportunities', title: 'Contracts that are SAP-ready before they reach SAP',
+      blocks: [
+        {
+          type: 'cards', span: 5, rows: 3, cols: 1, list: true, title: 'One WNS team, with Telkom · click for detail',
+          items: [
+            { icon: 'Workflow', name: 'WNS Transformation', line: 'Origination · workflow design · RPA and SAP handover', status: 'live', statusText: 'Since Oct 2026', team: 'BPET', detail: { rows: [['Role', 'Identified the contract-to-SAP gap through the RPA and P2P control tower work; designs the workflow, human review points and SAP handover'], ['Links to', 'PR and PO bots, P2P control tower, exception triage']] } },
+            { icon: 'Brain', name: 'WNS Analytics', line: 'Data foundation · AI readiness assessor · evidence reporting', status: 'live', statusText: 'POC shown', team: 'Analytics', detail: { rows: [['Role', 'P2P data foundation, contract views across Ariba and SAP, AI assessment and evidence-cited reporting'], ['Links to', 'Power BI org app, contract management views']] } },
+            { icon: 'Building2', name: 'Telkom Procurement', line: 'Contract owners · reviewers · data sovereignty', status: 'confirm', statusText: 'Sponsor', team: 'Telkom', detail: { text: 'Owns the contracts and the human sign-off before SAP capture. Analysis runs within Telkom\'s AI framework.' } },
+          ],
+        },
+        {
+          type: 'stepper', span: 7, rows: 3, title: 'Flagship · contract operationalisation (ContractOps AI)', note: 'POC demonstrated with Telkom · next: governed pilot',
           steps: [
             { name: 'Contract', icon: 'FileText', title: 'Read the signed agreement', points: ['Ariba workspace', 'Terms and amendments', 'Rates and escalation'] },
             { name: 'Analyse', icon: 'ScanSearch', title: 'Check terms against SAP rules', points: ['Line-item reconciliation', 'Material vs service', 'Payment conditions'] },
@@ -164,12 +195,12 @@ const CONFIG = {
           items: [
             { when: 'Now', name: 'Deliver and control', items: ['Deletion letter adoption', 'Virtual Pay solution', 'Restore discount and international POs to bot', 'NEDLMP master data clean-up'] },
             { when: 'Next', name: 'Expand and prevent', items: ['Deletion rules engine', 'Document completeness checks', 'Discount PO and zero-value automation', 'E-invoicing cost-centre bot'] },
-            { when: 'Future', name: 'Intelligent procurement', items: ['P2P control tower', 'Exception triage agent', 'Supplier and spend intelligence', 'ContractOps AI pilot'] },
+            { when: 'Future', name: 'Intelligent procurement', items: ['Contract operationalisation pilot', 'P2P control tower', 'Exception triage agent', 'Supplier and spend intelligence'] },
           ],
         },
         {
           type: 'asks', span: 4, rows: 2, title: 'Decisions requested from Telkom',
-          items: ['Sponsor the ContractOps AI 90-day pilot', 'Owner and date for NEDLMP master data clean-up', 'Approve discount PO and zero-value automation scope'],
+          items: ['Enable Microsoft enterprise AI access for the Shared Services team', 'Sponsor contract operationalisation from POC to governed pilot', 'Owner and date for NEDLMP master data clean-up', 'Approve discount PO and zero-value automation scope'],
         },
       ],
     },

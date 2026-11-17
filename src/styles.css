@@ -242,3 +242,14 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .ring-c b{color:#231F20}
 .node>b{color:#231F20}
 .tile:hover{box-shadow:0 6px 16px rgba(16,24,40,.08)}
+
+.team{margin-top:auto;align-self:flex-start;font-size:9.5px;font-weight:600;letter-spacing:.4px;color:#0070AD;background:#E8F4FB;border-radius:6px;padding:2px 7px}
+.icard .team+em,.icard em{margin-top:4px}
+
+.icards.list .icard{flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;text-align:left}
+.icards.list .ico{flex:none;width:44px;height:44px}
+.icards.list .lst-body{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
+.icards.list .icard b{font-size:16px}
+.icards.list .icard small{font-size:12px}
+.icards.list .lst-side{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.icards.list .team{margin-top:0;align-self:flex-end}
