@@ -8,6 +8,11 @@ export default function App() {
   const initial = Math.max(0, tabs.findIndex(t => '#' + t.id === window.location.hash))
   const [i, setI] = useState(initial)
   const [drawer, setDrawer] = useState(null)
+  useEffect(() => {
+    const onHash = () => { const n = tabs.findIndex(t => '#' + t.id === window.location.hash); if (n >= 0) { setI(n); setDrawer(null) } }
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
 
   const go = n => {
     const next = (n + tabs.length) % tabs.length

@@ -373,3 +373,26 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .icards.feature .icard .ifoot{font-size:18px;font-weight:600}
 .icards.feature .icard .ifoot b{font-size:11px}
 @media (max-height:720px){.icards.feature .ico{width:52px;height:52px}.icards.feature .icard b{font-size:18px}.icards.feature .icard .ifoot{font-size:14px}.icards.feature .icard{padding:14px}}
+
+.agenda{flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
+.ag-row{flex:1;display:flex;align-items:center;gap:22px;padding:0 26px;border-radius:16px;background:#F7F9FB;border:1px solid #E3E8EF;text-decoration:none;color:#231F20;animation:pop .5s both;transition:.2s;max-height:96px}
+.ag-row:hover{border-color:var(--accent);background:#fff;transform:translateX(6px);box-shadow:0 8px 20px rgba(16,24,40,.08)}
+.ag-n{font-size:30px;font-weight:800;color:var(--accent);width:52px}
+.ag-ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.ag-row b{flex:1;font-size:26px;font-weight:600;letter-spacing:-.3px}
+.ag-who{font-size:13px;font-weight:600;color:#5B6B7F;background:#EEF2F6;padding:5px 12px;border-radius:999px}
+.ag-go{color:#B8C2CC}
+.icard .irole{margin:10px 0 0;font-size:14px;line-height:1.45;color:#3D4752}
+.icard .irole b{display:block;font-size:10.5px!important;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:700}
+.icards.feature .icard .irole{font-size:16px}
+.icards.feature .icard .ifoot b{font-size:10.5px!important}
+@media (max-height:720px){.ag-row b{font-size:20px}.ag-ico{width:40px;height:40px}.ag-n{font-size:22px}.icards.feature .icard .irole{font-size:13px}}
+
+.icards.feature.dense .ico{width:50px;height:50px;border-radius:14px}
+.icards.feature.dense .ico svg{width:24px;height:24px}
+.icards.feature.dense .icard-top{margin-bottom:4px}
+.icards.feature.dense .icard{padding:16px 18px;gap:5px}
+.icards.feature.dense .icard b{font-size:20px}
+.icards.feature.dense .icard small{font-size:14px}
+.icards.feature.dense .icard .ifoot{font-size:16px;padding-top:8px}
+@media (max-height:720px){.icards.feature.dense .ico{width:38px;height:38px}.icards.feature.dense .icard b{font-size:16px}.icards.feature.dense .icard small{font-size:12px}.icards.feature.dense .icard .ifoot{font-size:13px}}
