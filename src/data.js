@@ -154,7 +154,7 @@ const CONFIG = {
       ],
     },
     {
-      id: 'ai', label: 'AI opportunities', title: 'Contracts that are SAP-ready before they reach SAP',
+      id: 'contract', label: 'Contract use case', title: 'Contract operationalisation: contract pack to SAP-ready',
       blocks: [
         {
           type: 'cards', span: 5, rows: 3, cols: 1, list: true, title: 'One WNS team, with Telkom · click for detail',
@@ -176,16 +176,97 @@ const CONFIG = {
           ],
         },
         {
-          type: 'cards', span: 12, cols: 5, rows: 2, agent: true, title: 'Agent opportunities · click for detail',
+          type: 'cards', span: 12, rows: 2, cols: 4, title: 'Value shown in the POC · click for detail',
           items: [
-            { icon: 'Radar', name: 'Exception triage', line: 'Finds why a PR or PO stopped', status: 'proposed', detail: { rows: [['Input', 'Bot logs, SAP status, NEDLMP queue'], ['Output', 'Classified exception with suggested fix and owner'], ['Measure', 'Touches avoided, turnaround']] } },
-            { icon: 'ShieldAlert', name: 'Supplier risk', line: 'Early warning on suppliers', status: 'proposed', detail: { rows: [['Input', 'Acknowledgement history, delivery, compliance'], ['Output', 'Risk-ranked suppliers with evidence']] } },
-            { icon: 'PieChart', name: 'Spend intelligence', line: 'Category and spot-buy insight', status: 'proposed', detail: { rows: [['Input', 'PO and contract data'], ['Output', 'Contract opportunities, e.g. reducing spot buy']] } },
-            { icon: 'Timer', name: 'Lead-time prediction', line: 'Fewer emergency POs', status: 'proposed', detail: { rows: [['Input', 'Historic lead times by supplier and category'], ['Output', 'Predicted delays before they happen']] } },
-            { icon: 'Gauge', name: 'Control tower', line: 'One live view, PR to payment', status: 'proposed', detail: { text: 'End-to-end P2P reporting as the data foundation for every agent above.' } },
+            { icon: 'AlertTriangle', name: 'Blockers found earlier', line: 'Before agreements reach SAP', status: 'complete', statusText: 'Shown in POC', detail: { text: 'Missing or conflicting information surfaces at handover, not when the agreement must be operationalised in SAP.' } },
+            { icon: 'ShieldCheck', name: 'Less cash leakage', line: 'Stronger contract and spend control', status: 'complete', statusText: 'Shown in POC', detail: { text: 'Contract and spend stay aligned because gaps are closed before SAP capture.' } },
+            { icon: 'Timer', name: 'Faster, consistent review', line: 'Every contract pack, same checks', status: 'complete', statusText: 'Shown in POC', detail: { text: 'Reusable across suppliers and agreement types.' } },
+            { icon: 'FileSearch', name: 'Audit-ready', line: 'Every finding linked to its source', status: 'complete', statusText: 'Shown in POC', detail: { text: 'Evidence-cited readiness report and a prioritised missing-information register, with clear human review points. Analysis stays within Telkom\'s AI framework.' } },
           ],
         },
       ],
+    },
+    {
+      "id": "ai",
+      "label": "AI journey",
+      "title": "WNS, part of Capgemini, is taking Telkom on the AI journey",
+      "blocks": [
+        {
+          "type": "hero",
+          "items": [
+            {
+              "value": "4",
+              "label": "Bots live, PR to PO",
+              "sub": "91% of PRs created by bot",
+              "tone": "good"
+            },
+            {
+              "value": "1",
+              "label": "AI POC on real Telkom contracts",
+              "sub": "Contract operationalisation",
+              "tone": "good"
+            },
+            {
+              "value": "9",
+              "label": "Analytics products",
+              "sub": "P2P data foundation · Power BI org app"
+            },
+            {
+              "value": "Pilot",
+              "label": "Next step",
+              "sub": "Governed, in Telkom's enterprise AI environment"
+            }
+          ]
+        },
+        {
+          "type": "track",
+          "span": 12,
+          "rows": 2,
+          "title": "How we take AI from idea to value · where contract operationalisation is today",
+          "at": 3,
+          "flag": "contract operationalisation"
+        },
+        {
+          "type": "waves",
+          "big": true,
+          "span": 12,
+          "rows": 4,
+          "title": "Done, under way, next 90 days",
+          "items": [
+            {
+              "when": "Done · proven with Telkom",
+              "name": "Built and in use",
+              "tone": "done",
+              "items": [
+                "PR, PO Release and acknowledgement bots live",
+                "Contract POC: pack in, SAP readiness report out",
+                "P2P data foundation and one Power BI org app",
+                "Duplicate payment monitoring"
+              ]
+            },
+            {
+              "when": "Under way",
+              "name": "Being delivered now",
+              "tone": "doing",
+              "items": [
+                "Moving the contract POC into Telkom's enterprise AI environment",
+                "Designing human review points before SAP capture",
+                "Bot events connected into the P2P data layer"
+              ]
+            },
+            {
+              "when": "Next 90 days",
+              "name": "What we will prove next",
+              "tone": "next",
+              "items": [
+                "Governed pilot on live contract packs",
+                "Measure: blockers caught before SAP, review time, leakage avoided",
+                "First exception triage agent on bot failures"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       id: 'next', label: 'Way forward', title: 'Three waves to intelligent procurement',

@@ -308,12 +308,31 @@ function Stepper({ b }) {
 function Waves({ b, open }) {
   return (
     <Card b={b}>
-      <div className="waves" style={{ gridTemplateColumns: `repeat(${b.items.length}, 1fr)` }}>
+      <div className={'waves' + (b.big ? ' ai-waves' : '')} style={{ gridTemplateColumns: `repeat(${b.items.length}, 1fr)` }}>
         {b.items.map((w, n) => (
-          <div key={w.name} className={'wave w' + n} style={{ animationDelay: `${n * 120}ms` }}>
+          <div key={w.name} className={'wave w' + n + (w.tone ? ' t-' + w.tone : '')} style={{ animationDelay: `${n * 120}ms` }}>
             <small>{w.when}</small>
             <b>{w.name}</b>
             <ul>{w.items.map(x => <li key={x}>{x}</li>)}</ul>
+            {w.foot && <em className="wave-foot">{w.foot}</em>}
+          </div>
+        ))}
+      </div>
+    </Card>
+  )
+}
+
+
+/* ---------- Value path (where the flagship is) ---------- */
+function Track({ b }) {
+  const steps = b.steps || ['Business problem', 'Use case', 'Prove value', 'Select architecture', 'Embed in workflow', 'Measure outcome']
+  return (
+    <Card b={b}>
+      <div className="track">
+        {steps.map((s, n) => (
+          <div key={s} className={'tk ' + (n < b.at ? 'done' : n === b.at ? 'here' : '')} style={{ animationDelay: `${n * 90}ms` }}>
+            <span>{n < b.at ? <Icons.Check size={14} /> : n + 1}</span>
+            <b>{s}</b>
           </div>
         ))}
       </div>
@@ -390,6 +409,7 @@ export default function Block({ b, open, idx }) {
     case 'asks': return <Asks b={b} />
     case 'units': return <Units b={b} />
     case 'journey': return <Journey b={b} open={open} />
+    case 'track': return <Track b={b} />
     default: return null
   }
 }
