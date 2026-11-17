@@ -340,6 +340,22 @@ function Track({ b }) {
   )
 }
 
+
+/* ---------- Lead statement ---------- */
+function Lead({ b }) {
+  return (
+    <Card b={b} className="lead-card">
+      <div className="lead">
+        {b.icon && <span className="lead-ico"><Icon name={b.icon} size={30} /></span>}
+        <div>
+          <p className="lead-text">{b.text}</p>
+          {b.chips && <div className="lead-chips">{b.chips.map(c => <span key={c}>{c}</span>)}</div>}
+        </div>
+      </div>
+    </Card>
+  )
+}
+
 /* ---------- Then and now ---------- */
 function Journey({ b, open }) {
   return (
@@ -410,6 +426,7 @@ export default function Block({ b, open, idx }) {
     case 'units': return <Units b={b} />
     case 'journey': return <Journey b={b} open={open} />
     case 'track': return <Track b={b} />
+    case 'lead': return <Lead b={b} />
     default: return null
   }
 }

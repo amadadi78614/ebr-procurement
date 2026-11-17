@@ -322,3 +322,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .icards.list .icard{padding:10px 14px}
 @media (max-height:720px){.icards.list .icard b{font-size:14px}.icards.list .ico{width:36px;height:36px}}
 .tk.here{flex-wrap:nowrap}
+
+.lead{flex:1;display:flex;align-items:center;gap:20px}
+.lead-ico{flex:none;width:64px;height:64px;border-radius:18px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 30%,transparent)}
+.lead-text{margin:0;font-size:19px;line-height:1.4;font-weight:500;color:#231F20}
+.lead-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.lead-chips span{font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;background:color-mix(in srgb,var(--accent) 10%,#fff);color:#0B4F75}
+@media (max-height:720px){.lead-text{font-size:16px}.lead-ico{width:50px;height:50px}.lead-chips{margin-top:6px}}
+.lead-card h3:empty{display:none}
